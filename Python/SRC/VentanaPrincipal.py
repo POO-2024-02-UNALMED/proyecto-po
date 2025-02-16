@@ -8,6 +8,7 @@ from FieldFrame import *
 from gestorAplicacion.alojamiento.Alojamiento import Alojamiento
 from gestorAplicacion.adminVuelos.Aerolinea import Aerolinea
 from tkinter import Tk
+from PIL import Image, ImageTk
 
 class VentanaSecundaria(Tk):
 
@@ -82,16 +83,28 @@ class VentanaSecundaria(Tk):
         self.label_descripcion.pack(ipadx = 2, ipady = 2, padx = 5, pady= 5)
 
         self.labelTexto = Label(self.ventana_operaciones, text = "Puedes hacerlo con las acciones dispuestas en el menu <Procesos y consultas>", font = ("Segoe UI", 10),bg="#b6ffff")
-        self.labelInicio = Label(self.ventana_operaciones, relief="raised", bg="blue")
-        self.imagenInicio = PhotoImage(file = './imagenes/Reservacion.png')
-        self.labelInicio["image"] = self.imagenInicio
-        self.labelTexto.pack(ipadx = 10, ipady =10, padx = 10, pady= 10)
-        self.labelInicio.pack(ipadx = 10, ipady =10, padx = 10, pady= 10,expand=True, fill=None)
+        self.labelInicio = Label(self.ventana_operaciones)
+        self.labelInicio.place(relheight=0.5, relwidth=0.5,relx=0.30, rely=0.4)
+        self.labelTexto.place(relheight=0.2, relwidth=0.8)
+        self.ventana_operaciones.after(100, self.cargar_imagen)
+
+    def cargar_imagen(self):
+        self.ImagenAplicacion = Image.open('./imagenes/--x3.png')
+
+        # Dimensiones del Label
+        ancho = int(self.labelInicio.winfo_width())
+        alto = int(self.labelInicio.winfo_height())
+
+        if ancho > 0 and alto > 0:  # Asegurar que tenga dimensiones válidas
+            self.ImagenAplicacion = self.ImagenAplicacion.resize((ancho, alto), Image.Resampling.LANCZOS)
+            self.ImagenTk = ImageTk.PhotoImage(self.ImagenAplicacion)  # Guardar referencia para evitar garbage collection
+
+            self.labelInicio.configure(image=self.ImagenTk)
         #FIN ZONA DE Labels
 
         self.contador_mostrarVuelosPorAerolineas = 0
         self.__class__.en_uso = True
-        
+
         self.mainloop()
 
     #--------------------------------------------------------------------------------------------------------------

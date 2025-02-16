@@ -30,16 +30,16 @@ class ventana_inicio(Tk):
         self.P1.place(relwidth=0.50, relheight=1)
         self.P3 = Frame(self.P1)
         self.P3.place(relwidth=0.985, relheight=0.285, relx=0.007, rely=0.009)
-        self.saludo = Label(self.P3, text="BIENVENIDO A TURBINA TOURS AND RESORT\n""HAZ CLICK EN LA IMAGEN PARA INGRESAR AL SISTEMA\n""⇣", font=("Segoe UI", 12), bg="#29d7e2")
+        self.saludo = Label(self.P3, text="BIENVENIDO A TURBINA TOURS AND RESORT\n""HAZ CLICK EN LA IMAGEN PARA INGRESAR AL SISTEMA\n""⇣", font=("Segoe UI", 12), bg="#13bcb7")
         self.P4 = Frame(self.P1, bg="pink")
         self.P4.place(relwidth=0.985, relheight=0.685, relx=0.007, rely=0.305)
         self.contenedorImagen = Label(self.P4)
         self.contenedorImagen.config()
         self.ImagenAplicacion = Image.open('./imagenes/--x3.png')
-        a, al=self.P4.winfo_width(),self.P4.winfo_width()
+        a, al=self.P4.winfo_width(),self.P4.winfo_height()
         self.ImagenAplicacion = self.ImagenAplicacion.resize((a, al), Image.Resampling.LANCZOS)
         self.contenedorImagen["image"] = ImageTk.PhotoImage(self.ImagenAplicacion)
-        self.P2 = Frame(self, bg="yellow")
+        self.P2 = Frame(self, bg="black")
         self.P2.place(relwidth=0.50, relheight=1, relx=0.50)
         self.P5 = Frame(self.P2, bg="Gray")
         self.P5.place(relwidth=0.985, relheight=0.285, relx=0.007, rely=0.009)
@@ -49,13 +49,13 @@ class ventana_inicio(Tk):
         self.P6 = Frame(self.P2,bg="Gray")
         self.P6.place(relwidth=0.985, relheight=0.685, relx=0.007, rely=0.305)
         self.saludo.place(relwidth=1, relheight=1)
-        self.W1 = Frame(self.P6, bg="Blue")
+        self.W1 = Frame(self.P6, bg="Gray", bd=2)
         self.W1.place(relx=0, rely=0, relwidth=0.5, relheight=0.5)
-        self.W2 = Frame(self.P6, bg="White")
+        self.W2 = Frame(self.P6, bg="Gray", bd=2)
         self.W2.place(relx=0.5, rely=0, relwidth=0.5, relheight=0.5)
-        self.W3 = Frame(self.P6, bg="Green")
+        self.W3 = Frame(self.P6, bg="Gray", bd=2)
         self.W3.place(relx=0, rely=0.5, relwidth=0.5, relheight=0.5)
-        self.W4 = Frame(self.P6, bg="Black")
+        self.W4 = Frame(self.P6, bg="Gray", bd=2)
         self.W4.place(relx=0.5, rely=0.5, relwidth=0.5, relheight=0.5)
 
         #CONTADORES CAMBIO DE CASOS METODOS
@@ -139,10 +139,10 @@ class ventana_inicio(Tk):
             y3 = self.contador + 10
             y4 = self.contador + 11
         elif self.contador == 0:
-            y1 = self.contador + 20
-            y2 = self.contador + 21
-            y3 = self.contador + 21
-            y4 = self.contador + 20
+            y1 = self.contador + 1
+            y2 = self.contador + 6
+            y3 = self.contador + 9
+            y4 = self.contador + 14
         elif self.contador == 5:
             y1 = self.contador + 11
             y2 = self.contador + 12
